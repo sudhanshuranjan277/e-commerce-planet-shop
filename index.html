@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Planet Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Planet Shop</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Offer</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Buy Now</a></li>
+                <li><a href="#">Sell</a></li>
+                <li><a href="#" class="sign-up" id="signup-btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="planet-list">
+            <div class="planet-card">
+                <img src="True_Mercury.jpg" alt="Mercury">
+                <h2>Mercury</h2>
+                <p>Mercury is the smallest planet...</p>
+                <button class="btn">Buy Now</button>
+            </div>
+
+            <div class="planet-card">
+                <img src="venus.jpg" alt="Venus">
+                <h2>Venus</h2>
+                <p>Venus is the second planet from the Sun...</p>
+                <button class="btn">Buy Now</button>
+            </div>
+
+            <div class="planet-card">
+                <h2>Earth</h2>
+                <video controls width="200" height="auto">
+                    <source src="earth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Our home planet...</p>
+                <button class="btn">Buy Now</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Planet Shop. All rights reserved.</p>
+    </footer>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>Sign Up / Log In</h2>
+
+            <div id="login-form">
+                <h3>Log In</h3>
+                <input type="text" placeholder="Login ID">
+                <input type="password" placeholder="Password">
+                <button>Log In</button>
+                <a href="#" id="forgot-password">Forgot Password?</a>
+            </div>
+
+            <div id="create-account-form" style="display: none;">
+                <h3>Create Account</h3>
+                <input type="text" placeholder="Login ID">
+                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Confirm Password">
+                <button>Create Account</button>
+            </div>
+
+            <button id="switch-to-create">Create Account</button>
+            <button id="switch-to-login" style="display: none;">Back to Login</button>
+        </div>
+    </div>
+
+    <script>
+        const signupButton = document.getElementById('signup-btn');
+        const signupModal = document.getElementById('signup-modal');
+        const closeModalButton = document.getElementById('close-modal');
+        const switchToCreateButton = document.getElementById('switch-to-create');
+        const switchToLoginButton = document.getElementById('switch-to-login');
+        const loginForm = document.getElementById('login-form');
+        const createAccountForm = document.getElementById('create-account-form');
+        const forgotPasswordLink = document.getElementById('forgot-password');
+
+        signupButton.addEventListener('click', () => {
+            signupModal.style.display = 'block';
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            signupModal.style.display = 'none';
+            loginForm.style.display = 'block';
+            createAccountForm.style.display = 'none';
+            switchToLoginButton.style.display = 'none';
+            switchToCreateButton.style.display = 'block';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == signupModal) {
+                signupModal.style.display = 'none';
+                loginForm.style.display = 'block';
+                createAccountForm.style.display = 'none';
+                switchToLoginButton.style.display = 'none';
+                switchToCreateButton.style.display = 'block';
+            }
+        });
+
+        switchToCreateButton.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            createAccountForm.style.display = 'block';
+            switchToCreateButton.style.display = 'none';
+            switchToLoginButton.style.display = 'block';
+        });
+
+        switchToLoginButton.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            createAccountForm.style.display = 'none';
+            switchToLoginButton.style.display = 'none';
+            switchToCreateButton.style.display = 'block';
+        });
+
+        forgotPasswordLink.addEventListener('click', () => {
+            // Here you'd typically have a more complex flow for password reset
+            alert("Forgot Password clicked (functionality not implemented in this example).");
+        });
+    </script>
+
+</body>
+</html>
